@@ -3,235 +3,283 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nishant Subedi</title>
-<meta name="description" content="Nishant Subedi: PhD researcher in nanoscale heat transport at the University of Virginia ExSiTE Lab. Thermal engineering, electronics and liquid cooling, thermal metrology.">
+<title>Nishant Subedi · Thermal engineering</title>
+<meta name="description" content="Nishant Subedi: PhD researcher in heat transport at the University of Virginia ExSiTE Lab. Electronics cooling, liquid cooling, thermal metrology.">
+<meta name="theme-color" content="#0b0d10">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Layout idea: one calm reading column, like a lab notebook page. Each project is tagged
-   with the length scale of its heat problem, from nanometers to meters. A thin thermal
-   colormap line is the only ornament. */
 :root{
-  --bg:#f6f7f8;
-  --surface:#ffffff;
-  --ink:#16191d;
-  --muted:#5a626d;
-  --rule:#dfe3e8;
-  --accent:#c2410c;      /* ember */
-  --cool:#1d4e89;        /* steel blue */
-  --font-display:"Newsreader", Georgia, "Times New Roman", serif;
-  --font-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --heat:linear-gradient(90deg,#1d4e89 0%,#3b7dd8 22%,#9bb7c9 42%,#f2b84b 64%,#e5672c 82%,#b4230e 100%);
-  color-scheme:light;
+  --bg:#0b0d10; --bg2:#111419; --card:#151920; --line:#232933; --line2:#2f3744;
+  --ink:#e8ebef; --muted:#9aa4b1; --dim:#6b7583;
+  --accent:#7cc4ff;
+  --display:"Space Grotesk", system-ui, sans-serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#111418; --surface:#171b20; --ink:#e7eaee; --muted:#9aa3ae; --rule:#2a3038;
-    --accent:#f08a4b; --cool:#7fb0ef; color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#111418; --surface:#171b20; --ink:#e7eaee; --muted:#9aa3ae; --rule:#2a3038;
-  --accent:#f08a4b; --cool:#7fb0ef; color-scheme:dark;
-}
-
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);
-  font-size:17px;line-height:1.65}
-a{color:var(--cool);text-decoration-thickness:1px;text-underline-offset:3px}
-a:hover{color:var(--accent)}
-a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-size:13px;letter-spacing:.04em}
 
-.page{max-width:720px;margin:0 auto;padding:56px 20px 40px;display:grid;gap:56px}
-.heat{height:3px;border-radius:2px;background:var(--heat)}
+/* Nav */
+.nav{position:sticky;top:0;z-index:10;background:rgba(11,13,16,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:var(--display);font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-.01em}
+.logo:hover{text-decoration:none}
+.nav ul{list-style:none;display:flex;gap:26px;margin:0;padding:0;font-size:14.5px}
+.nav ul a{color:var(--muted)}
+.nav ul a:hover{color:var(--ink);text-decoration:none}
 
 /* Hero */
-.hero{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
-.portrait{width:104px;height:104px;border-radius:50%;object-fit:cover;
-  background:var(--surface);border:1px solid var(--rule);display:grid;place-items:center;
-  font-family:var(--font-display);font-size:34px;color:var(--muted)}
-h1{font-family:var(--font-display);font-weight:600;font-size:clamp(34px,6vw,46px);
-  line-height:1.1;margin:0;letter-spacing:-.01em;text-wrap:balance}
-.role{margin:6px 0 0;color:var(--muted)}
-.role a{color:inherit}
-.links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;font-size:15px}
-.links span{font-family:var(--font-mono);font-size:13px;color:var(--muted)}
+.hero{padding:88px 0 72px;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+.eyebrow{color:var(--accent);margin:0 0 18px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(44px,7vw,78px);line-height:1.02;letter-spacing:-.03em;margin:0}
+.tagline{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);line-height:1.35;color:var(--muted);margin:22px 0 0;max-width:30ch}
+.tagline b{color:var(--ink);font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:15px;padding:11px 20px;border-radius:999px;border:1px solid var(--line2);color:var(--ink);transition:border-color .2s,background .2s,transform .2s}
+.btn:hover{text-decoration:none;border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+.photo{position:relative;justify-self:end;width:100%;max-width:340px}
+.photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:22px;border:1px solid var(--line2)}
+.photo .tag{position:absolute;left:-18px;bottom:22px;background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:10px 14px;font-size:13.5px;line-height:1.35;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.photo .tag span{display:block;color:var(--dim);font-family:var(--mono);font-size:11.5px;letter-spacing:.05em}
 
-/* Prose */
-.bio{display:grid;gap:14px;max-width:65ch}
-.bio p{margin:0}
-.lead{font-family:var(--font-display);font-size:23px;line-height:1.4;font-weight:500}
+/* Facts strip */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact{padding:22px 20px;border-right:1px solid var(--line)}
+.fact:last-child{border-right:0}
+.fact b{display:block;font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.01em}
+.fact span{color:var(--muted);font-size:14px}
 
-h2{font-family:var(--font-display);font-weight:600;font-size:26px;margin:0 0 6px;text-wrap:balance}
-.section-note{margin:0 0 22px;color:var(--muted);font-size:15px}
+/* Sections */
+section{padding:96px 0 0}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+.sec-head .num{color:var(--dim)}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(30px,4vw,40px);line-height:1.15;letter-spacing:-.02em;margin:0}
+
+/* About */
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+.about .lead{font-family:var(--display);font-size:clamp(22px,2.6vw,28px);line-height:1.4;font-weight:500;letter-spacing:-.01em;margin:0}
+.about .text p{margin:0 0 18px;color:#c9cfd7}
+.about .text p:last-child{color:var(--ink);font-weight:500}
 
 /* Research */
-.research{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:22px 24px;display:grid;gap:12px}
-.research h3{margin:0;font-size:18px;font-weight:600}
-.research p{margin:0}
-.research h4{margin:6px 0 0;font-size:13px;font-family:var(--font-mono);font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.handson{margin:0;padding-left:20px;display:grid;gap:8px}
-.handson li::marker{color:var(--accent)}
-.handson strong{font-weight:600}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.chip{font-family:var(--font-mono);font-size:12.5px;padding:3px 9px;border:1px solid var(--rule);border-radius:999px;color:var(--muted)}
+.research{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.research h3{font-family:var(--display);font-size:24px;font-weight:600;line-height:1.25;margin:8px 0 0;letter-spacing:-.01em}
+.research p{margin:0;color:#c9cfd7}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{font-family:var(--mono);font-size:12.5px;padding:5px 11px;border:1px solid var(--line2);border-radius:999px;color:var(--muted)}
 
-/* Projects */
-.projects{list-style:none;margin:0;padding:0;display:grid}
-.project{display:grid;grid-template-columns:88px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--rule)}
-.project:last-child{border-bottom:1px solid var(--rule)}
-.scale{font-family:var(--font-mono);font-size:13px;color:var(--accent);padding-top:3px;font-variant-numeric:tabular-nums}
-.scale small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
-.project h3{margin:0 0 4px;font-size:18px;font-weight:600;line-height:1.35}
-.project p{margin:0;color:var(--ink)}
-.meta{font-family:var(--font-mono);font-size:12.5px;color:var(--muted);margin-top:8px}
+/* Featured projects */
+.featured{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;color:var(--ink);transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--line2);text-decoration:none}
+.card .img{background:#fff;aspect-ratio:16/10;overflow:hidden}
+.card .img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.card:hover .img img{transform:scale(1.03)}
+.card .body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.scale{color:var(--accent)}
+.card h3{font-family:var(--display);font-size:20px;font-weight:600;line-height:1.25;margin:0;letter-spacing:-.01em}
+.card p{margin:0;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.card .more{margin-top:auto;padding-top:8px;font-size:14.5px;color:var(--ink);font-weight:500}
+.card .more i{font-style:normal;color:var(--accent);transition:margin .2s}
+.card:hover .more i{margin-left:4px}
+.extra{font-size:14px;margin-top:4px}
 
-/* Experience */
-.timeline{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.timeline li{display:grid;grid-template-columns:150px 1fr;gap:16px}
-.when{font-family:var(--font-mono);font-size:13px;color:var(--muted);padding-top:2px;font-variant-numeric:tabular-nums}
-.timeline strong{font-weight:600}
-.timeline span{color:var(--muted)}
+/* Other projects */
+.sub{font-family:var(--display);font-size:20px;font-weight:600;margin:56px 0 18px;color:var(--muted)}
+.others{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.other{border:1px solid var(--line);border-radius:16px;padding:22px 24px;background:var(--bg2)}
+.other h4{font-family:var(--display);font-size:18px;font-weight:600;margin:6px 0 8px;line-height:1.3}
+.other p{margin:0;font-size:15px;line-height:1.6;color:var(--muted)}
+.other .meta{margin-top:12px;color:var(--dim);font-size:12px}
 
-/* Skills */
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
-.skills h3{margin:0 0 6px;font-size:13px;font-family:var(--font-mono);font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.skills p{margin:0;font-size:15.5px}
+/* Contact */
+.contact{margin:110px 0 0;padding:56px 0 40px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
+.contact h2{max-width:18ch}
+.contact .links{display:flex;gap:12px;flex-wrap:wrap}
+footer{color:var(--dim);font-size:13px;padding:0 0 40px}
 
-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--muted);font-size:14px;padding-top:18px;border-top:1px solid var(--rule)}
-
-@media (max-width:520px){
-  .page{padding-top:36px;gap:44px}
-  .hero{grid-template-columns:1fr}
-  .project{grid-template-columns:1fr;gap:6px}
-  .timeline li{grid-template-columns:1fr;gap:2px}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:56px;gap:40px}
+  .photo{justify-self:start;max-width:280px}
+  .photo .tag{left:auto;right:-14px}
+  .about,.research{grid-template-columns:1fr;gap:24px}
+  .featured{grid-template-columns:1fr}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .fact:nth-child(2){border-right:0}
+  .fact:nth-child(-n+2){border-bottom:1px solid var(--line)}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:640px){
+  .nav ul li.hide-sm{display:none}
+  .nav ul{gap:18px}
+  .others{grid-template-columns:1fr}
+  section{padding-top:72px}
+  .research{padding:26px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<main class="page">
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top">Nishant Subedi</a>
+    <ul>
+      <li class="hide-sm"><a href="#about">About</a></li>
+      <li class="hide-sm"><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="https://github.com/Nishant2031">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top" class="wrap">
 
   <header class="hero">
-    <img class="portrait" src="photo.jpg" alt="Nishant Subedi" width="104" height="104">
     <div>
-      <h1>Nishant Subedi</h1>
-      <p class="role">PhD Researcher, ExSiTE Lab, University of Virginia · Charlottesville, VA</p>
-      <nav class="links" aria-label="Contact and profiles">
-        <a href="https://www.linkedin.com/in/nishant2031">LinkedIn</a>
-        <a href="https://github.com/Nishant2031">GitHub</a>
-        <a href="#projects">Projects</a>
-        <!-- Add: <a href="mailto:you@virginia.edu">Email</a> -->
-      </nav>
+      <p class="eyebrow mono">PHD RESEARCHER · EXSITE LAB · UNIVERSITY OF VIRGINIA</p>
+      <h1>Nishant<br>Subedi</h1>
+      <p class="tagline">Thermal engineer. <b>I figure out where the heat goes, and how to get it out faster.</b></p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my projects ↓</a>
+        <a class="btn" href="https://www.linkedin.com/in/nishant2031">LinkedIn</a>
+        <a class="btn" href="https://github.com/Nishant2031">GitHub</a>
+      </div>
+    </div>
+    <div class="photo">
+      <img src="photo.jpg" alt="Nishant Subedi" width="680" height="850">
+      <div class="tag"><span>BASED IN</span>Charlottesville, VA</div>
     </div>
   </header>
 
-  <div class="heat" role="presentation"></div>
+  <div class="facts" aria-label="Quick facts">
+    <div class="fact"><b>Nepal</b><span>where I grew up</span></div>
+    <div class="fact"><b>BSME, USF</b><span>Mechanical Engineering, 2026</span></div>
+    <div class="fact"><b>PhD, UVA</b><span>heat transport, ExSiTE Lab</span></div>
+    <div class="fact"><b>Heat transfer</b><span>chips, cooling, interfaces</span></div>
+  </div>
 
-  <section class="bio" aria-label="About">
-    <p class="lead">I grew up in Nepal, the land of Mount Everest and the birthplace of Gautam Buddha. Then I moved to Florida for college, which is about as big a change in weather as you can get. Somewhere along the way, I became an engineer who spends most of his time thinking about one thing: heat.</p>
-    <p>I studied Mechanical Engineering at the University of South Florida, and right after graduating I joined Prof. Patrick Hopkins' ExSiTE Lab at the University of Virginia, where I'm now a PhD student. Show me a hot chip, a battery pack, or a packed server rack, and my first question is where the heat is going and how to get it out faster. That's just how thermal engineers are: we don't really like heat. Sometimes I think that's the real reason I left Florida.</p>
-    <p>Right now, heat is one of the biggest things holding computing back. Chips keep getting more powerful, and every extra watt has to go somewhere. That's the problem I want to spend my career on. In the lab, I study how heat crosses the interfaces between materials, layers only nanometers thick, using lasers that track temperature changes over a few trillionths of a second, all the way down to cryogenic temperatures.</p>
-    <p>Coming to Virginia was also about wanting a change and seeing more of the world. I'm a huge football fan (yes, the one people here call soccer), and a Messi fan through and through. Following the game has taught me more about cities around the world than any geography class, so I always have a list of places I want to visit. Norway is high on it, but as a science person, my go-to would be Germany.</p>
-    <p>Outside the lab, I also follow the stock and options markets. I'm not a finance guy, but I can't resist a good pattern, so I keep my own spreadsheets and try to figure out what's moving and why. I'm also the person who has to try every new piece of tech, and nothing gets me more excited than a new way to cool something down. When my head gets too full, I go for a long walk and let things settle.</p>
-    <p>If you want to talk heat transfer, cooling, or football, I'm always up for it.</p>
+  <section id="about" aria-labelledby="about-h">
+    <div class="sec-head"><span class="num mono">01</span><h2 id="about-h">About</h2></div>
+    <div class="about">
+      <p class="lead">I grew up in Nepal, the land of Mount Everest and the birthplace of Gautam Buddha. Then I moved to Florida for college, which is about as big a change in weather as you can get. Somewhere along the way, I became an engineer who spends most of his time thinking about one thing: heat.</p>
+      <div class="text">
+        <p>I studied Mechanical Engineering at the University of South Florida, and right after graduating I joined Prof. Patrick Hopkins' ExSiTE Lab at the University of Virginia, where I'm now a PhD student. Show me a hot chip, a battery pack, or a packed server rack, and my first question is where the heat is going and how to get it out faster. That's just how thermal engineers are: we don't really like heat. Sometimes I think that's the real reason I left Florida.</p>
+        <p>Right now, heat is one of the biggest things holding computing back. Chips keep getting more powerful, and every extra watt has to go somewhere. That's the problem I want to spend my career on. In the lab, I study how heat crosses the interfaces between materials, layers only nanometers thick, using lasers that track temperature changes over a few trillionths of a second, all the way down to cryogenic temperatures.</p>
+        <p>Coming to Virginia was also about wanting a change and seeing more of the world. I'm a huge football fan (yes, the one people here call soccer), and a Messi fan through and through. Following the game has taught me more about cities around the world than any geography class, so I always have a list of places I want to visit. Norway is high on it, but as a science person, my go-to would be Germany.</p>
+        <p>Outside the lab, I also follow the stock and options markets. I'm not a finance guy, but I can't resist a good pattern, so I keep my own spreadsheets and try to figure out what's moving and why. I'm also the person who has to try every new piece of tech, and nothing gets me more excited than a new way to cool something down. When my head gets too full, I go for a long walk and let things settle.</p>
+        <p>If you want to talk heat transfer, cooling, or football, I'm always up for it.</p>
+      </div>
+    </div>
   </section>
 
-  <section aria-labelledby="research-h">
-    <h2 id="research-h">Research</h2>
-    <p class="section-note">ExSiTE: Experiments and Simulations in Thermal Engineering</p>
+  <section id="research" aria-labelledby="research-h">
+    <div class="sec-head"><span class="num mono">02</span><h2 id="research-h">Research</h2></div>
     <div class="research">
-      <h3>Non-equilibrium heat transport at interfaces</h3>
-      <p>In modern chips, much of the thermal resistance hides in layers only nanometers thick: between the die, the thermal interface material, and the package. I use pump-probe thermoreflectance to measure thermal conductivity and thermal boundary conductance in thin films, and to study how phonons and electron–phonon coupling govern heat flow when carriers and the lattice fall out of equilibrium.</p>
-      <div class="chips" aria-label="Research methods">
-        <span class="chip">TDTR / FDTR</span>
-        <span class="chip">Thermal boundary conductance</span>
-        <span class="chip">Phonon transport</span>
-        <span class="chip">Two-temperature model</span>
-        <span class="chip">Cryogenic measurements</span>
-        <span class="chip">Multilayer heat diffusion</span>
+      <div>
+        <p class="mono scale">EXSITE LAB · UVA · 2026–PRESENT</p>
+        <h3>Non-equilibrium heat transport at interfaces</h3>
+      </div>
+      <div>
+        <p>In modern chips, much of the thermal resistance hides in layers only nanometers thick: between the die, the thermal interface material, and the package. I use pump-probe thermoreflectance to measure thermal conductivity and thermal boundary conductance in thin films, and to study how phonons and electron–phonon coupling govern heat flow when carriers and the lattice fall out of equilibrium.</p>
+        <div class="chips" aria-label="Research methods">
+          <span class="chip">TDTR / FDTR</span><span class="chip">Thermal boundary conductance</span><span class="chip">Phonon transport</span><span class="chip">Two-temperature model</span><span class="chip">Cryogenics</span><span class="chip">Multilayer heat diffusion</span>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="projects" aria-labelledby="projects-h">
-    <h2 id="projects-h">Projects</h2>
-    <p class="section-note">Ordered by the length scale of the heat problem.</p>
-    <ul class="projects">
-      <li class="project">
-        <div class="scale">~10 nm<small>interfaces</small></div>
-        <div>
-          <h3>Nanoscale thermal metrology: how heat crosses interfaces</h3>
-          <p>In a chip, a surprising share of the thermal resistance sits in layers only nanometers thick and in the boundaries between materials. I use ultrafast laser measurements and multilayer heat-diffusion models to find out how well heat moves through thin films and across those buried interfaces, from room temperature down to cryogenic conditions.</p>
-          <div class="meta">ExSiTE Lab, UVA · Ultrafast laser metrology · Heat-diffusion modeling · Cryogenics · 2026–present</div>
+    <div class="sec-head"><span class="num mono">03</span><h2 id="projects-h">Projects</h2></div>
+    <div class="featured">
+      <a class="card" href="coldplate.html">
+        <div class="img"><img src="thumbs/coldplate.jpg" alt="Junction temperature map of the chip under the cold plate, with hotspots" loading="lazy"></div>
+        <div class="body">
+          <span class="mono scale">~100 µm · MICROCHANNELS</span>
+          <h3>Microchannel cold plate for a 1 kW AI accelerator</h3>
+          <p>A Python design tool that sweeps 600 geometries and holds a 1,000 W chip at 69 °C with 0.21 W of pumping power, 70% lower thermal resistance than a 1 mm-channel plate.</p>
+          <span class="more">Read the write-up <i>→</i></span>
         </div>
-      </li>
-      <li class="project">
-        <div class="scale">~100 µm<small>microchannels</small></div>
-        <div>
-          <h3><a href="coldplate.html">Microchannel cold plate for a 1 kW AI accelerator</a></h3>
-          <p>Wrote a Python design tool that sweeps 600 cold plate geometries and picks the one that holds a 1,000 W, 30 mm die at 69 °C with 0.21 W of pumping power, a 70% lower thermal resistance than a conventional 1 mm-channel plate. Checked against my own finite-volume conjugate solver: total resistance agrees within 5%.</p>
-          <div class="meta">Personal project · Python · Conjugate heat transfer · Design optimization · 2026 · <a href="coldplate.html">Read the write-up</a></div>
+      </a>
+      <a class="card" href="package.html">
+        <div class="img"><img src="thumbs/package.jpg" alt="Weibull plot of simulated solder-joint failures in a 77-part thermal-cycling test" loading="lazy"></div>
+        <div class="body">
+          <span class="mono scale">~1 CM · CHIP PACKAGE</span>
+          <h3>Warpage and solder fatigue in a CoWoS-style package</h3>
+          <p>How a 1 kW die on a silicon interposer bends, and how its solder bumps fatigue under −40/125 °C cycling, turned into Weibull lifetime statistics (B1 ≈ 1,200 cycles).</p>
+          <span class="more">Read the write-up <i>→</i></span>
         </div>
-      </li>
-      <li class="project">
-        <div class="scale">~1 cm<small>chip package</small></div>
-        <div>
-          <h3><a href="package.html">Warpage and solder-joint fatigue in a CoWoS-style AI package</a></h3>
-          <p>Modelled how a 1 kW die on a silicon interposer bends and how its C4 solder bumps fatigue under −40/125 °C cycling, with Anand viscoplasticity for the solder. Turned it into Weibull lifetime statistics from a simulated 77-part test (B1 ≈ 1,200 cycles) and a field life above 25 years. Corner-bump strain agrees within 2% with my own finite-element model.</p>
-          <div class="meta">Personal project · Python · Thermo-mechanical reliability · Weibull statistics · 2026 · <a href="package.html">Read the write-up</a></div>
+      </a>
+      <a class="card" href="refrigeration.html">
+        <div class="img"><img src="thumbs/refrigeration.jpg" alt="Model versus Copeland datasheet refrigerant mass flow, all points on the line of perfect agreement" loading="lazy"></div>
+        <div class="body">
+          <span class="mono scale">~1 M · REFRIGERATION</span>
+          <h3>Refrigeration Thermal Lab</h3>
+          <p>A vapor-compression simulator that finds where a real system runs from its heat-exchanger sizes. Matches a Copeland compressor datasheet to 0.14% in mass flow. Has a live web app.</p>
+          <span class="more">Read the write-up <i>→</i></span>
         </div>
-      </li>
-      <li class="project">
-        <div class="scale">~10 cm<small>battery pack</small></div>
-        <div>
-          <h3>Transient thermal simulation of a Li-ion battery pack</h3>
-          <p>Built a 3D transient model of a cylindrical-cell pack with internal heat generation. The center cells ran hottest, near 50 °C, which showed where better cooling and thermal-runaway protection were needed.</p>
-          <div class="meta">ANSYS · Transient thermal · 2023–2024</div>
-        </div>
-      </li>
-      <li class="project">
-        <div class="scale">~10 cm<small>cooling loop</small></div>
-        <div>
-          <h3>Liquid cooling loop</h3>
-          <p>Designed, built, and tested my own liquid cooling setup to see first-hand how each part of the loop shapes overall cooling performance.</p>
-          <div class="meta">Personal project · Hands-on build · Write-up coming soon</div>
-        </div>
-      </li>
-      <li class="project">
-        <div class="scale">~1 m<small>refrigeration</small></div>
-        <div>
-          <h3><a href="refrigeration.html">Refrigeration Thermal Lab: a vapor-compression cycle simulator</a></h3>
-          <p>Built a Python and Streamlit app that finds where a real refrigeration system actually runs: give it the heat-exchanger sizes and the source and sink temperatures, and it solves for the evaporating and condensing temperatures, cooling capacity, and COP. Checked against all 57 points of a Copeland R407C compressor datasheet, it reproduces the refrigerant mass flow within 0.14% on average.</p>
-          <div class="meta">Personal project · Python · CoolProp · Streamlit · 2026 · <a href="refrigeration.html">Read the write-up</a> · <a href="https://nishant-refrigeration-lab.streamlit.app/" target="_blank" rel="noopener">Try the live app</a></div>
-        </div>
-      </li>
-      <li class="project">
-        <div class="scale">~1 m<small>airfoil</small></div>
-        <div>
-          <h3>Coupled CFD–FEA of airfoils</h3>
-          <p>Ran 10+ CFD studies in ANSYS Fluent and OpenFOAM across angles of attack, coupled with FEA for structural and thermal response. Reduced drag coefficient from 0.031 to 0.030, and validated thermal predictions in a wind tunnel to within ±5 °C.</p>
-          <div class="meta">Bi-Aero Lab, USF · Fluent · OpenFOAM · FEA · 2025–2026</div>
-        </div>
-      </li>
-      <li class="project">
-        <div class="scale">~1 m<small>robot arm</small></div>
-        <div>
-          <h3>6-DOF robotic welding arm (capstone)</h3>
-          <p>Led a team of five from architecture to working arm: link and joint design, motor selection based on torque and thermal behavior, FEA to a safety factor above 3, and forward/inverse kinematics.</p>
-          <div class="meta">USF capstone · Project lead · SolidWorks · ANSYS · 2025–2026</div>
-        </div>
-      </li>
-    </ul>
+      </a>
+    </div>
+
+    <h3 class="sub">More projects</h3>
+    <div class="others">
+      <div class="other">
+        <span class="mono scale">~10 NM · INTERFACES</span>
+        <h4>Nanoscale thermal metrology</h4>
+        <p>Ultrafast laser measurements and multilayer heat-diffusion models to find how well heat moves through thin films and across buried interfaces, from room temperature down to cryogenic conditions.</p>
+        <div class="meta mono">EXSITE LAB, UVA · 2026–PRESENT</div>
+      </div>
+      <div class="other">
+        <span class="mono scale">~10 CM · BATTERY PACK</span>
+        <h4>Transient thermal model of a Li-ion pack</h4>
+        <p>A 3D transient model of a cylindrical-cell pack with internal heat generation. The center cells ran hottest, near 50 °C, showing where cooling and thermal-runaway protection were needed.</p>
+        <div class="meta mono">ANSYS · 2023–2024</div>
+      </div>
+      <div class="other">
+        <span class="mono scale">~10 CM · COOLING LOOP</span>
+        <h4>Liquid cooling loop</h4>
+        <p>Designed, built, and tested my own liquid cooling setup to see first-hand how each part of the loop shapes overall cooling performance.</p>
+        <div class="meta mono">PERSONAL BUILD · WRITE-UP COMING SOON</div>
+      </div>
+      <div class="other">
+        <span class="mono scale">~1 M · AIRFOIL</span>
+        <h4>Coupled CFD–FEA of airfoils</h4>
+        <p>10+ CFD studies in ANSYS Fluent and OpenFOAM coupled with FEA. Cut drag coefficient from 0.031 to 0.030 and matched wind-tunnel temperatures within ±5 °C.</p>
+        <div class="meta mono">BI-AERO LAB, USF · 2025–2026</div>
+      </div>
+      <div class="other">
+        <span class="mono scale">~1 M · ROBOT ARM</span>
+        <h4>6-DOF robotic welding arm (capstone)</h4>
+        <p>Led a team of five from architecture to working arm: link and joint design, motor selection on torque and thermal behavior, FEA to a safety factor above 3, and kinematics.</p>
+        <div class="meta mono">USF CAPSTONE · PROJECT LEAD · 2025–2026</div>
+      </div>
+      <div class="other">
+        <span class="mono scale">LIVE APP</span>
+        <h4>Try the refrigeration simulator</h4>
+        <p>Pick a refrigerant, set the water temperatures and exchanger sizes, and watch the cycle settle on a pressure-enthalpy diagram.</p>
+        <div class="meta mono"><a href="https://nishant-refrigeration-lab.streamlit.app/" target="_blank" rel="noopener">OPEN THE APP ↗</a></div>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <span>Nishant Subedi · Charlottesville, Virginia</span>
-    <span><a href="https://www.linkedin.com/in/nishant2031">LinkedIn</a> · <a href="https://github.com/Nishant2031">GitHub</a></span>
-  </footer>
+  <div class="contact">
+    <h2>Let's talk heat transfer, cooling, or football.</h2>
+    <div class="links">
+      <a class="btn primary" href="https://www.linkedin.com/in/nishant2031">LinkedIn</a>
+      <a class="btn" href="https://github.com/Nishant2031">GitHub</a>
+    </div>
+  </div>
+  <footer>Nishant Subedi · Charlottesville, Virginia</footer>
 </main>
 </body>
 </html>
