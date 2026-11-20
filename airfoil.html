@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Airfoil Aerodynamics: Vortex Lattice to CFD · Nishant Subedi</title>
+<meta name="description" content="A vortex lattice thin-airfoil solver and MATLAB app, validated against thin airfoil theory and XFOIL, compared with OpenFOAM CFD.">
+<meta name="theme-color" content="#0b0d10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d10;--card:#151920;--line:#232933;--ink:#e8ebef;--muted:#9aa4b1;--dim:#6b7583;--accent:#7cc4ff;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:18px;line-height:1.75}
+a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--dim);text-underline-offset:4px}
+a:hover{color:var(--accent)}
+.wrap{max-width:860px;margin:0 auto;padding:44px 24px 40px}
+.crumbs{font-size:16px;color:var(--muted)}
+.crumbs a{text-decoration:none;color:var(--muted)} .crumbs a:hover{color:var(--ink)}
+.crumbs .me{color:var(--ink);font-weight:500}
+.crumbs span{margin:0 10px;color:var(--dim)}
+h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:600;font-size:clamp(34px,5.5vw,52px);line-height:1.08;letter-spacing:-.02em;margin:72px 0 16px;max-width:16ch}
+.meta{color:var(--muted);font-size:16.5px;display:flex;flex-wrap:wrap;gap:6px 28px;margin:0 0 40px}
+.media{display:grid;gap:14px}
+.media img,.media video{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#000}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cap{font-size:14px;color:var(--dim);margin:6px 2px 0}
+p.body{margin:44px 0 0}
+.facts{display:flex;flex-wrap:wrap;gap:8px 26px;margin:26px 0 0;font-size:15.5px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:500}
+footer{margin-top:90px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:15px}
+footer a{color:var(--muted);text-decoration:none} footer a:hover{color:var(--ink)}
+@media (max-width:640px){.pair{grid-template-columns:1fr}h1{margin-top:48px}}
+table{border-collapse:collapse;width:100%;margin:30px 0 0;font-size:16px;font-variant-numeric:tabular-nums}
+th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500;font-size:14px}
+th:first-child,td:first-child{text-align:left}
+.tcap{font-size:14px;color:var(--dim);margin:8px 2px 0}
+.plot img{background:#fff;padding:8px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a class="me" href="index.html">Nishant Subedi</a><span>/</span><a href="index.html#projects">Projects</a><span>/</span>Aerodynamics</nav>
+
+  <h1>Airfoil Aerodynamics: Vortex Lattice to CFD</h1>
+  <p class="meta"><span>2025–2026</span><span>Thin Airfoil Theory, MATLAB, OpenFOAM</span></p>
+
+  <div class="media">
+    <div class="pair">
+      <div>
+        <img src="airfoil/openfoam_streamlines.jpg" alt="OpenFOAM streamlines around a NACA 0012 airfoil" loading="lazy">
+        <p class="cap">OpenFOAM streamlines around a NACA 0012.</p>
+      </div>
+      <div>
+        <img src="airfoil/openfoam_pressure.jpg" alt="OpenFOAM pressure field around a NACA 0012 airfoil" loading="lazy">
+        <p class="cap">Pressure field from the same OpenFOAM run.</p>
+      </div>
+    </div>
+    <div class="plot">
+      <img src="airfoil/vlm_validation.png" alt="Two plots: pressure coefficient difference along the chord of a NACA 0012 at 10 degrees, and lift coefficient against angle of attack for a NACA 4412; vortex lattice points lie on the thin airfoil theory curves" loading="lazy">
+      <p class="cap">My vortex lattice solver against thin airfoil theory: (a) load along the chord, (b) the lift curve.</p>
+    </div>
+  </div>
+
+  <p class="body">I wrote a thin-airfoil solver in MATLAB using a vortex lattice method: the camber line becomes 100 discrete vortices, flow tangency is enforced at control points, and a single linear solve gives lift, moment and center of pressure for any NACA 4-digit airfoil. I wrapped it in a MATLAB app so you can change the camber and angle of attack and see the answer right away, checked it against thin airfoil theory and XFOIL, and then ran OpenFOAM (RANS, Spalart–Allmaras) to see where a fully turbulent CFD model starts to disagree with linear theory at low angles of attack.</p>
+
+  <table aria-label="Zero-lift angle of attack">
+    <thead><tr><th>Airfoil</th><th>Vortex lattice</th><th>Thin airfoil theory</th><th>XFOIL</th><th>Error</th></tr></thead>
+    <tbody>
+      <tr><td>NACA 2412</td><td>−2.062°</td><td>−2.077°</td><td>−2.080°</td><td>0.86%</td></tr>
+      <tr><td>NACA 3412</td><td>−3.101°</td><td>−3.103°</td><td>−3.163°</td><td>1.96%</td></tr>
+      <tr><td>NACA 4412</td><td>−4.147°</td><td>−4.142°</td><td>−4.214°</td><td>1.58%</td></tr>
+    </tbody>
+  </table>
+  <p class="tcap">Zero-lift angle of attack: every airfoil within 2% of XFOIL.</p>
+
+  <footer>
+    <a href="index.html">← Back to all projects</a>
+    <span><a href="https://www.linkedin.com/in/nishant2031">LinkedIn</a> · <a href="https://github.com/Nishant2031">GitHub</a></span>
+  </footer>
+</main>
+</body>
+</html>
