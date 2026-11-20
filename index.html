@@ -129,6 +129,9 @@ footer{color:var(--dim);font-size:13px;padding:0 0 40px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 .lab{color:inherit;text-decoration:underline;text-decoration-color:rgba(124,196,255,.45);text-underline-offset:3px}
 .lab:hover{color:var(--accent)}
+.olink{display:block;color:var(--ink);transition:border-color .2s,transform .2s}
+.olink:hover{text-decoration:none;border-color:var(--line2);transform:translateY(-3px)}
+.olink .go{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -259,12 +262,12 @@ footer{color:var(--dim);font-size:13px;padding:0 0 40px}
         <p>10+ CFD studies in ANSYS Fluent and OpenFOAM coupled with FEA. Cut drag coefficient from 0.031 to 0.030 and matched wind-tunnel temperatures within ±5 °C.</p>
         <div class="meta mono">BI-AERO LAB, USF · 2025–2026</div>
       </div>
-      <div class="other">
+      <a class="other olink" href="capstone.html">
         <span class="mono scale">~1 M · ROBOT ARM</span>
-        <h4>6-DOF robotic welding arm (capstone)</h4>
-        <p>Led a team of five from architecture to working arm: link and joint design, motor selection on torque and thermal behavior, FEA to a safety factor above 3, and kinematics.</p>
-        <div class="meta mono">USF CAPSTONE · PROJECT LEAD · 2025–2026</div>
-      </div>
+        <h4>5-DOF robotic welding arm (capstone)</h4>
+        <p>Led a team of six to build a 3D-printed, Raspberry Pi controlled arm that automates welding. It traced test paths within 0.22 cm on average.</p>
+        <div class="meta mono">USF CAPSTONE · PROJECT LEAD · 2025–2026 · <span class="go">WATCH IT MOVE →</span></div>
+      </a>
       <div class="other">
         <span class="mono scale">LIVE APP</span>
         <h4>Try the refrigeration simulator</h4>
