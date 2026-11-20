@@ -23,7 +23,7 @@ a:hover{color:var(--accent)}
 h1{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:600;font-size:clamp(34px,5.5vw,52px);line-height:1.08;letter-spacing:-.02em;margin:72px 0 16px;max-width:16ch}
 .meta{color:var(--muted);font-size:16.5px;display:flex;flex-wrap:wrap;gap:6px 28px;margin:0 0 40px}
 .media{display:grid;gap:14px}
-.media img,.media video{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#000}
+.media img,.media video{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:14px;border:1px solid var(--line);background:#000}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .cap{font-size:14px;color:var(--dim);margin:6px 2px 0}
 p.body{margin:44px 0 0}
@@ -44,12 +44,12 @@ footer a{color:var(--muted);text-decoration:none} footer a:hover{color:var(--ink
   <div class="media">
     <div class="pair">
       <div>
-        <img src="https://static.wixstatic.com/media/793cb6_b6056edbb6aa486c9b6234ca7d7b35db~mv2.png" alt="ANSYS model of a 24-cell cylindrical lithium-ion battery pack, top view" loading="lazy">
+        <img src="https://static.wixstatic.com/media/793cb6_b6056edbb6aa486c9b6234ca7d7b35db~mv2.png" alt="ANSYS model of a 24-cell cylindrical lithium-ion battery pack" loading="lazy">
         <p class="cap">The 24-cell pack as modelled in ANSYS.</p>
       </div>
       <div>
-        <img src="https://static.wixstatic.com/media/793cb6_7a5cf2e2c55c47a78c267c23350f176b~mv2.png" alt="Side view of the cylindrical cells inside the pack enclosure" loading="lazy">
-        <p class="cap">Side view of the cell arrangement.</p>
+        <img src="battery/hotspot.jpg" alt="ANSYS temperature field of the battery pack after the transient run, with hotspots between the center cells" loading="lazy">
+        <p class="cap">After the transient run: hotspots form between the center cells.</p>
       </div>
     </div>
   </div>
