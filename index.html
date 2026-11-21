@@ -75,7 +75,9 @@ h2{font-family:var(--display);font-weight:600;font-size:clamp(30px,4vw,40px);lin
 /* Research */
 .research{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:36px}
 .research h3{font-family:var(--display);font-size:24px;font-weight:600;line-height:1.25;margin:8px 0 0;letter-spacing:-.01em}
-.research p{margin:0;color:#c9cfd7}
+.research p{margin:0 0 14px;color:#c9cfd7}
+.research p b{color:var(--ink);font-weight:500}
+.research .rlede{margin-top:16px;color:var(--muted);font-size:16px;line-height:1.6}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .chip{font-family:var(--mono);font-size:12.5px;padding:5px 11px;border:1px solid var(--line2);border-radius:999px;color:var(--muted)}
 
@@ -132,6 +134,11 @@ footer{color:var(--dim);font-size:13px;padding:0 0 40px}
 .olink{display:block;color:var(--ink);transition:border-color .2s,transform .2s}
 .olink:hover{text-decoration:none;border-color:var(--line2);transform:translateY(-3px)}
 .olink .go{color:var(--accent)}
+.tl{list-style:none;margin:30px 0 0;padding:0 0 0 18px;border-left:1px solid var(--line2)}
+.tl li{position:relative;margin:0 0 22px;color:var(--muted);font-size:15px;line-height:1.55}
+.tl li::before{content:"";position:absolute;left:-23px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+.tl .mono{display:block;color:var(--accent);font-size:12.5px;margin-bottom:2px}
+.tl b{color:var(--ink);font-weight:500}
 </style>
 </head>
 <body>
@@ -195,11 +202,19 @@ footer{color:var(--dim);font-size:13px;padding:0 0 40px}
       <div>
         <p class="mono scale"><a class="lab" href="https://patrickehopkins.com/" target="_blank" rel="noopener">EXSITE LAB</a> · UVA · 2026–PRESENT</p>
         <h3>Non-equilibrium heat transport at interfaces</h3>
+        <p class="rlede">What happens to heat in the first trillionth of a second, and why it matters for the next generation of chips.</p>
+        <ol class="tl" aria-label="Timeline after a laser pulse">
+          <li><span class="mono">~100 fs</span><b>Laser pulse</b> heats the electrons in the metal film</li>
+          <li><span class="mono">~1 ps</span><b>Electrons hand energy to phonons</b> as the two systems relax toward one temperature</li>
+          <li><span class="mono">100 ps – ns</span><b>Heat crosses the interface</b> into the layers below, where its resistance is measured</li>
+        </ol>
       </div>
       <div>
-        <p>In modern chips, much of the thermal resistance hides in layers only nanometers thick: between the die, the thermal interface material, and the package. I use pump-probe thermoreflectance to measure thermal conductivity and thermal boundary conductance in thin films, and to study how phonons and electron–phonon coupling govern heat flow when carriers and the lattice fall out of equilibrium.</p>
+        <p>Hit a metal film with a laser pulse a few hundred femtoseconds long, and for a brief moment its electrons are far hotter than the atoms around them. There is no longer a single temperature: electrons and phonons each carry energy on their own clock until they settle back into equilibrium a few picoseconds later. That short window decides how quickly heat can escape across an interface.</p>
+        <p>I study it with pump-probe thermoreflectance (TDTR and FDTR), measuring thermal conductivity and thermal boundary conductance in thin films down to cryogenic temperatures. Spectroscopic ellipsometry gives me each film's thickness and optical constants, which the thermal models need to turn a tiny change in reflectivity into a real number.</p>
+        <p><b>Why it matters for industry cooling.</b> In a modern AI chip, much of the thermal resistance sits in layers only nanometers thick, at the bonded interfaces between the die, the interface material and the package. As 3D stacking and hybrid bonding add more of those interfaces, they become a direct limit on how much heat a cold plate or immersion system can actually pull out of the silicon.</p>
         <div class="chips" aria-label="Research methods">
-          <span class="chip">TDTR / FDTR</span><span class="chip">Thermal boundary conductance</span><span class="chip">Phonon transport</span><span class="chip">Two-temperature model</span><span class="chip">Cryogenics</span><span class="chip">Multilayer heat diffusion</span>
+          <span class="chip">TDTR / FDTR</span><span class="chip">Spectroscopic ellipsometry</span><span class="chip">Thermal boundary conductance</span><span class="chip">Electron–phonon coupling</span><span class="chip">Two-temperature model</span><span class="chip">Cryogenics</span><span class="chip">Heterogeneous integration</span>
         </div>
       </div>
     </div>
